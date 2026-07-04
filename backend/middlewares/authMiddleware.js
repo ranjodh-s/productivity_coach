@@ -19,7 +19,7 @@ export default function protect(req, res, next) {
 
         const decoded = jwt.verify(
             token,
-            process.JWT_SECRET
+            process.env.JWT_SECRET
         );
 
         req.user = decoded;

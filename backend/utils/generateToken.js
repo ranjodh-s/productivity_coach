@@ -8,7 +8,7 @@ export default function generateToken(userId) {
             id: userId
         },
 
-        process.JWT_SECRET,
+        process.env.JWT_SECRET,
 
         {
             expiresIn: "7d"

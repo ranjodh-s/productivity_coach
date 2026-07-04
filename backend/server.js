@@ -14,12 +14,13 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-    origin: [
-        "http://localhost:5173",
-        "https://productivity-coach-taupe.vercel.app/"
-    ],
-    credentials: true
+  origin: [
+    "http://localhost:5173",
+    "https://productivity-coach-taupe.vercel.app"
+  ],
+  credentials: true
 }));
+
 app.use(express.json());
 app.use("/api/tasks", taskRoutes);
 app.use("/api/ai", aiRoutes);

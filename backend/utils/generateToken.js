@@ -8,7 +8,7 @@ export default function generateToken(userId) {
             id: userId
         },
 
-        import.meta.env.JWT_SECRET,
+        process.JWT_SECRET,
 
         {
             expiresIn: "7d"

@@ -6,7 +6,7 @@ dotenv.config();
 const { Pool } = pg;
 
 const pool = new Pool({
-     connectionString: import.meta.env.DATABASE_URL,
+     connectionString: process.DATABASE_URL,
 });
 
 pool.connect()

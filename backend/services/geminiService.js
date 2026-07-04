@@ -1,7 +1,7 @@
 import { GoogleGenAI } from "@google/genai";
 
 const ai = new GoogleGenAI({
-    apiKey: import.meta.env.GEMINI_API_KEY
+    apiKey: process.GEMINI_API_KEY
 });
 
 export async function prioritizeTasks(tasks,schedule,currentDate) {

@@ -16,7 +16,7 @@ const app = express();
 app.use(cors({
     origin: [
         "http://localhost:5173",
-        "https://yourfrontend.onrender.com"
+        "https://productivity-coach-taupe.vercel.app/"
     ],
     credentials: true
 }));

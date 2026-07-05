@@ -1,11 +1,6 @@
 import { useState } from 'react'
-import { Route, Routes} from 'react-router-dom'
+import { redirect, Route, Routes} from 'react-router-dom'
 import './App.css'
-// import Form from './Form.jsx'
-// import TaskList from './components/TaskList.jsx'
-// import TaskForm from './components/TaskForm.jsx'
-// import DailyScheduleForm from './components/DailyScheduleForm.jsx'
-
 import Dashboard from './pages/Dashboard.jsx'
 import AddTask from "./pages/AddTask.jsx";
 import DailyRoutine from "./pages/DailyRoutine";
@@ -14,36 +9,60 @@ import FocusMode from "./pages/FocusMode";
 import Navbar from './components/NavBar.jsx';
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import ProtectedRoute from './components/ProtectedRoute.jsx';
+import { Navigate } from "react-router-dom";
 
 
 
 
 
 function App() {
+  const token = localStorage.getItem("token");
   
   return (
     <>
     <Navbar />
       <Routes>
+        <Route path="/" element={<Navigate to="/dashboard" replace />} />
       <Route
-        path="/"
-        element={<Dashboard />}
+        path="/dashboard"
+        element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        }
       />
       <Route
         path="/tasks"
-        element={<AddTask />}
+        element={
+          <ProtectedRoute>
+            <AddTask />
+          </ProtectedRoute>
+        }
       />
       <Route
         path="/schedule"
-        element={<DailyRoutine />}
+        element={
+          <ProtectedRoute>
+            <DailyRoutine />
+          </ProtectedRoute>
+        }
       />
       <Route
         path="/ai"
-        element={<AIPlanner />}
+        element={
+          <ProtectedRoute>
+            <AIPlanner />
+          </ProtectedRoute>
+        }
       />
       <Route
     path="/focus"
-    element={<FocusMode />}
+    element={
+      <ProtectedRoute>
+        <FocusMode />
+      </ProtectedRoute>
+    }
 />
 <Route
     path="/signup"
@@ -52,7 +71,7 @@ function App() {
 
     <Route
     path="/login"
-    element={<Login />}
+    element={token ? <Navigate to="/dashboard" replace /> : <Login />}
 />
       </ Routes>
       

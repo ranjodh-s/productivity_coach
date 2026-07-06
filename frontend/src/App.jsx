@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { redirect, Route, Routes} from 'react-router-dom'
 import './App.css'
 import Dashboard from './pages/Dashboard.jsx'
@@ -17,11 +17,12 @@ import { Navigate } from "react-router-dom";
 
 
 function App() {
-  const token = localStorage.getItem("token");
+  const [token,setToken] = useState(localStorage.getItem("token"));
+  
   
   return (
     <>
-    {token && <Navbar />}
+    {token && <Navbar setToken={setToken} />}
       <Routes>
         <Route path="/" element={<Navigate to="/dashboard" replace />} />
       <Route
@@ -71,7 +72,7 @@ function App() {
 
     <Route
     path="/login"
-    element={token ? <Navigate to="/dashboard" replace /> : <Login />}
+    element={token ? <Navigate to="/dashboard" replace /> : <Login setToken={setToken} />}
 />
       </ Routes>
       

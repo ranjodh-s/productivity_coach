@@ -21,7 +21,7 @@ function App() {
   
   return (
     <>
-    <Navbar />
+    {token && <Navbar />}
       <Routes>
         <Route path="/" element={<Navigate to="/dashboard" replace />} />
       <Route

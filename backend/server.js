@@ -8,6 +8,7 @@ import aiRoutes from "./routes/aiRoutes.js";
 import scheduleRoutes from "./routes/scheduleRoutes.js";
 import { startMorningPlanner } from "./jobs/morningPlanner.js";
 import authRoutes from "./routes/authRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 
 dotenv.config();
 
@@ -26,6 +27,7 @@ app.use("/api/tasks", taskRoutes);
 app.use("/api/ai", aiRoutes);
 app.use("/api/schedule", scheduleRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/user", userRoutes);
 
 const PORT = process.env.PORT || 5000;
 

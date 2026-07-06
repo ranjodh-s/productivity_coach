@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 import { login } from "../services/authApi";
 
-export default function Login() {
+export default function Login({ setToken }) {
 
     const navigate = useNavigate();
 
@@ -38,9 +38,8 @@ localStorage.setItem(
     response.data.token
 );
 
+setToken(response.data.token);
 navigate("/");
-
-            alert("Login Successful");
 
             navigate("/");
 
